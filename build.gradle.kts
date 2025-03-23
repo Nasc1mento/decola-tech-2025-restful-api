@@ -29,6 +29,12 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "me.dio.decola_tech_2025.Application"
+	}
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
