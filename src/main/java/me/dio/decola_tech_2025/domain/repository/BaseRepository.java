@@ -1,4 +1,4 @@
-package me.dio.decola_tech_2025.repository;
+package me.dio.decola_tech_2025.domain.repository;
 
 import me.dio.decola_tech_2025.domain.model.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
