@@ -1,5 +1,6 @@
 package me.dio.decola_tech_2025.service.impl;
 
+import jakarta.transaction.Transactional;
 import me.dio.decola_tech_2025.domain.model.User;
 import me.dio.decola_tech_2025.domain.repository.UserRepository;
 import me.dio.decola_tech_2025.service.UserService;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User create(User user) {
         if (user.getId() != null && this.repository.existsById(user.getId())) {
             throw  new IllegalArgumentException("This user already exists");
