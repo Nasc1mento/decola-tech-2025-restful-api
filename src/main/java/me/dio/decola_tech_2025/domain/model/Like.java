@@ -24,7 +24,6 @@ public class Like extends BaseEntity {
     @JoinColumn(name = "post_id")
     private Post post;
 
-
     @Override
     public String toString() {
         return "Like{" +

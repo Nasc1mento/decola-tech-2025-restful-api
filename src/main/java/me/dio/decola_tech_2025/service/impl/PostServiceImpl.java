@@ -5,9 +5,12 @@ import me.dio.decola_tech_2025.domain.repository.PostRepository;
 import me.dio.decola_tech_2025.dto.post.PostCreateDto;
 import me.dio.decola_tech_2025.dto.post.PostDto;
 import me.dio.decola_tech_2025.dto.post.PostUpdateDto;
+import me.dio.decola_tech_2025.dto.user.UserDto;
 import me.dio.decola_tech_2025.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.NoSuchElementException;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -29,11 +32,15 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void delete(Long id) {
-
+        this.postRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        this.postRepository.deleteById(id);
     }
 
     @Override
     public PostDto update(Long id, PostUpdateDto u) {
-        return null;
+        var postFound = this.postRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        postFound.setTitle(u.getTitle());
+        postFound.setContent(u.getContent());
+        return this.modelMapper.map(postFound, PostDto.class);
     }
 }

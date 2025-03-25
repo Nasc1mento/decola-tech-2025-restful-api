@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Long id) {
-        var userFound = this.repository.findById(id).orElseThrow(NoSuchElementException::new);
+        this.repository.findById(id).orElseThrow(NoSuchElementException::new);
         this.repository.deleteById(id);
     }
 

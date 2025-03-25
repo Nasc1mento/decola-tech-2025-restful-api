@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import me.dio.decola_tech_2025.domain.model.Comment;
 import me.dio.decola_tech_2025.domain.model.Like;
-import me.dio.decola_tech_2025.domain.model.Post;
+import me.dio.decola_tech_2025.dto.post.PostDto;
 
 import java.util.Set;
 
@@ -18,7 +18,4 @@ import java.util.Set;
 public class UserDto {
     private Long id;
     private String username;
-    private Set<Post> articles;
-    private Set<Comment> comments;
-    private Set<Like> likes;
 }

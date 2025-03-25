@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.dio.decola_tech_2025.domain.model.Comment;
-import me.dio.decola_tech_2025.domain.model.Like;
 import me.dio.decola_tech_2025.dto.comment.CommentDto;
-import me.dio.decola_tech_2025.dto.user.UserDto;
+import me.dio.decola_tech_2025.dto.like.LikeDto;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,7 +17,6 @@ public class PostDto {
     private Long id;
     private String title;
     private String content;
-    private UserDto user;
-    private Set<CommentDto> comments;
-    private Set<Like> likes;
+    private List<CommentDto> comments;
+    private List<LikeDto> likes;
 }
