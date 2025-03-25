@@ -16,18 +16,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handle(IllegalArgumentException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handle(NoSuchElementException e) {
-        return new ResponseEntity<>("Resource ID not found", HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Resource ID not found");
     }
 
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<String> handle(Throwable e) {
         var msg = "Unexpected server error";
         logger.error(msg, e);
-        return new ResponseEntity<>(msg, HttpStatus.INTERNAL_SERVER_ERROR);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
     }
 }

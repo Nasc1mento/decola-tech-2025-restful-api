@@ -1,76 +1,43 @@
 package me.dio.decola_tech_2025.domain.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.List;
+import java.util.Set;
 
+
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    private String name;
+    @Column(nullable = true, unique = true)
+    private String username;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Account account;
+    @Column(nullable = true)
+    private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Card card;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Post> articles;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<News> news;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Comment> comments;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Feature> features;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Like> likes;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public List<Feature> getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(List<Feature> features) {
-        this.features = features;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public List<News> getNews() {
-        return news;
-    }
-
-    public void setNews(List<News> news) {
-        this.news = news;
-    }
 
     @Override
     public String toString() {
         return "User{" +
                 super.toString() +
-                "name='" + name + '\'' +
-                ", account=" + account +
-                ", card=" + card +
-                ", news=" + news +
-                ", features=" + features +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", articles=" + articles +
+                ", comments=" + comments +
+                ", likes=" + likes +
                 '}';
     }
 }

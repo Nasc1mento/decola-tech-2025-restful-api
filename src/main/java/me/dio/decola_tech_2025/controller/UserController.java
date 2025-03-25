@@ -1,6 +1,9 @@
 package me.dio.decola_tech_2025.controller;
 
-import me.dio.decola_tech_2025.domain.model.User;
+import jakarta.validation.Valid;
+import me.dio.decola_tech_2025.dto.user.UserCreateDto;
+import me.dio.decola_tech_2025.dto.user.UserDto;
+import me.dio.decola_tech_2025.dto.user.UserUpdateDto;
 import me.dio.decola_tech_2025.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +22,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User user) {
+    public ResponseEntity<UserDto> create(@Valid @RequestBody UserCreateDto user) {
+        System.out.println(user);
         var userCreated = userService.create(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -29,8 +33,20 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
         var userFound = userService.findById(id);
         return ResponseEntity.ok(userFound);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        this.userService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> update(@PathVariable Long id, @Valid @RequestBody UserUpdateDto user) {
+        var userUpdated = this.userService.update(id,user);
+        return ResponseEntity.ok(userUpdated);
     }
 }
