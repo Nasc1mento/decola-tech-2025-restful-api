@@ -23,7 +23,6 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> create(@Valid @RequestBody UserCreateDto user) {
-        System.out.println(user);
         var userCreated = userService.create(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
