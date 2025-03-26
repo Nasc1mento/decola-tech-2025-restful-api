@@ -46,6 +46,6 @@ public class UserServiceImpl implements UserService {
         var userFound = this.repository.findById(id).orElseThrow(NoSuchElementException::new);
         userFound.setUsername(u.getUsername());
         userFound.setPassword(u.getPassword());
-        return this.modelMapper.map(userFound, UserDto.class);
+        return this.modelMapper.map(this.repository.save(userFound), UserDto.class);
     }
 }

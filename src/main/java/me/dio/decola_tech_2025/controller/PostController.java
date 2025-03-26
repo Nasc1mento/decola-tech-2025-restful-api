@@ -1,6 +1,7 @@
 package me.dio.decola_tech_2025.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import me.dio.decola_tech_2025.dto.post.PostCreateDto;
 import me.dio.decola_tech_2025.dto.post.PostDto;
 import me.dio.decola_tech_2025.dto.post.PostUpdateDto;
@@ -11,15 +12,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/posts")
 public class PostController {
 
     private final PostService postService;
-
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
 
 
     @PostMapping

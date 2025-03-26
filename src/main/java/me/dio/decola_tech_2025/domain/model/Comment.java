@@ -3,9 +3,6 @@ package me.dio.decola_tech_2025.domain.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -23,10 +20,6 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @OneToMany(mappedBy = "comment")
-    private Set<Like> likes;
-
-
     @Override
     public String toString() {
         return "Comment{" +
@@ -34,7 +27,6 @@ public class Comment extends BaseEntity {
                 "content='" + content + '\'' +
                 ", user=" + user +
                 ", post=" + post +
-                ", likes=" + likes +
                 '}';
     }
 }

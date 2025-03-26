@@ -1,19 +1,17 @@
 package me.dio.decola_tech_2025.dto.comment;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import me.dio.decola_tech_2025.dto.like.LikeDto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentDto {
-    private Long id;
+public class CommentCreateDto {
+    private Long userId;
+    private Long postId;
     private String content;
-    private List<LikeDto> likes;
 }

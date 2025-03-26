@@ -14,10 +14,7 @@ import lombok.EqualsAndHashCode;
 public class Like extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
-
-    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
@@ -28,7 +25,6 @@ public class Like extends BaseEntity {
     public String toString() {
         return "Like{" +
                 super.toString() +
-                "comment=" + comment +
                 ", user=" + user +
                 ", post=" + post +
                 '}';

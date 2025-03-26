@@ -1,6 +1,7 @@
 package me.dio.decola_tech_2025.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import me.dio.decola_tech_2025.dto.user.UserCreateDto;
 import me.dio.decola_tech_2025.dto.user.UserDto;
 import me.dio.decola_tech_2025.dto.user.UserUpdateDto;
@@ -11,15 +12,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping
     public ResponseEntity<UserDto> create(@Valid @RequestBody UserCreateDto user) {

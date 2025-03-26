@@ -27,21 +27,25 @@ public class LikePostServiceImpl implements LikePostService {
     @Override
     @Transactional
     public LikeDto like(LikePostRequestDto likePostDto) {
-        var postFound = this.postRepository.findById(likePostDto.getPostId()).orElseThrow(NoSuchElementException::new);
-        var userFound = userRepository.findById(likePostDto.getUserId()).orElseThrow(NoSuchElementException::new);
-        Like like = new Like();
-        like.setPost(postFound);
-        like.setUser(userFound);
-        like.setComment(null);
-        return this.modelMapper.map(likeRepository.save(like), LikeDto.class);
-    }
-
-    @Override
-    public void unlike(LikePostRequestDto likePostDto) {
         var postFound = this.postRepository.findById(likePostDto.getPostId())
                 .orElseThrow(NoSuchElementException::new);
 
         var userFound = userRepository.findById(likePostDto.getUserId())
+                .orElseThrow(NoSuchElementException::new);
+
+        Like like = new Like();
+        like.setPost(postFound);
+        like.setUser(userFound);
+        return this.modelMapper.map(likeRepository.save(like), LikeDto.class);
+    }
+
+    @Transactional
+    @Override
+    public void unlike(Long userId, Long postId) {
+        var postFound = this.postRepository.findById(postId)
+                .orElseThrow(NoSuchElementException::new);
+
+        var userFound = userRepository.findById(userId)
                 .orElseThrow(NoSuchElementException::new);
 
         var like = this.likeRepository.findByPostAndUser(postFound, userFound)

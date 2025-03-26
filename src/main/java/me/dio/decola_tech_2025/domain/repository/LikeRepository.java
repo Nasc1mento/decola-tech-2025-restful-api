@@ -1,5 +1,6 @@
 package me.dio.decola_tech_2025.domain.repository;
 
+import me.dio.decola_tech_2025.domain.model.Comment;
 import me.dio.decola_tech_2025.domain.model.Like;
 import me.dio.decola_tech_2025.domain.model.Post;
 import me.dio.decola_tech_2025.domain.model.User;
