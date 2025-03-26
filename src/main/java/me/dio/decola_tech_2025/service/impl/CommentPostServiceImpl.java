@@ -2,7 +2,6 @@ package me.dio.decola_tech_2025.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import me.dio.decola_tech_2025.domain.model.Comment;
-import me.dio.decola_tech_2025.domain.model.User;
 import me.dio.decola_tech_2025.domain.repository.CommentRepository;
 import me.dio.decola_tech_2025.domain.repository.PostRepository;
 import me.dio.decola_tech_2025.domain.repository.UserRepository;

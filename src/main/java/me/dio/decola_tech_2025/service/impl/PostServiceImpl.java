@@ -6,7 +6,6 @@ import me.dio.decola_tech_2025.domain.repository.PostRepository;
 import me.dio.decola_tech_2025.dto.post.PostCreateDto;
 import me.dio.decola_tech_2025.dto.post.PostDto;
 import me.dio.decola_tech_2025.dto.post.PostUpdateDto;
-import me.dio.decola_tech_2025.dto.user.UserDto;
 import me.dio.decola_tech_2025.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
