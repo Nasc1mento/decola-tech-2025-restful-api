@@ -9,6 +9,7 @@ classDiagram
     -String password
     -Post[] posts
     -Comment[] comments
+    -Like[] likes
   }
 
   class Post {
