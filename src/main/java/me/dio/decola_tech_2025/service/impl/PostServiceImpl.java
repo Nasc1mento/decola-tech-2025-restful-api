@@ -1,5 +1,6 @@
 package me.dio.decola_tech_2025.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import me.dio.decola_tech_2025.domain.model.Post;
 import me.dio.decola_tech_2025.domain.repository.PostRepository;
 import me.dio.decola_tech_2025.dto.post.PostCreateDto;
@@ -13,15 +14,11 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
-
-    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
-        this.postRepository = postRepository;
-        this.modelMapper = modelMapper;
-    }
 
 
     @Override

@@ -1,5 +1,6 @@
 package me.dio.decola_tech_2025.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import me.dio.decola_tech_2025.domain.model.User;
 import me.dio.decola_tech_2025.domain.repository.UserRepository;
 import me.dio.decola_tech_2025.dto.user.UserCreateDto;
@@ -13,15 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository repository, ModelMapper modelMapper) {
-        this.repository = repository;
-        this.modelMapper = modelMapper;
-    }
 
     @Override
     @Transactional(readOnly = true)
